@@ -11,7 +11,8 @@
   "dependencies": {
     "node-fetch": "^2.6.1",
     "telebot": "^1.4.1",
-    "telegraf": "^4.3.0"
+    "telegraf": "^4.3.0",
+    "telegraf-inline-menu": "^6.2.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.3",
