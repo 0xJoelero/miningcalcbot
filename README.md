@@ -1,6 +1,7 @@
 # MiningCalcBot
 I'm @miningcalcbot. I'm a bot that calculates time to break even of GPU investments on Ethereum mining farms.
 
+
 ## TODO:
 - [ ] Write the About and How to run in the README
 - [ ] Add electric energy cost to `calculateRevenue` function
