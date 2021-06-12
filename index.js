@@ -15,12 +15,12 @@ let gpuWatts;
 let buttons = [
   [
     {
-      text: "RX 580",
+      text: "RX 580 8GB",
       callback_data: "580",
     },
     {
-      text: "RX 5700XT",
-      callback_data: "5700",
+      text: "RX 570 8GB",
+      callback_data: "570",
     },
   ],
   [
@@ -41,6 +41,12 @@ let buttons = [
     {
       text: "RX 5500",
       callback_data: "5500",
+    },
+  ],
+  [
+    {
+      text: "RX 5700XT",
+      callback_data: "5700",
     },
   ],
 ];
@@ -92,7 +98,8 @@ bot.start((ctx) => {
     \n*The supported GPUS are:*
 ⛏RX5700XT
 ⛏RX5550XT
-⛏RX580
+⛏RX580 8GB
+⛏RX570 8GB
 ⛏RTX3070
 ⛏RTX3080
 ⛏GTX1660S
@@ -110,7 +117,8 @@ bot.command("help", (ctx) => {
     \n*The supported GPUS are:*
 ⛏RX5700XT
 ⛏RX5550XT
-⛏RX580
+⛏RX580 8GB
+⛏RX570 8GB
 ⛏RTX3070
 ⛏RTX3080
 ⛏GTX1660S
@@ -143,13 +151,16 @@ bot.action("5500", (ctx1) => {
   gpuSelected = ctx1.callbackQuery.data;
   ethRate();
   rewardResult();
-  ctx1.reply("*GPU RX5500XT* \nNow please send the cost in USD of  ⤵", opts);
+  ctx1.reply(
+    "*GPU RX5500XT 8GB* \nNow please send the cost in USD of  ⤵",
+    opts
+  );
 });
 bot.action("580", (ctx1) => {
   gpuSelected = ctx1.callbackQuery.data;
   ethRate();
   rewardResult();
-  ctx1.reply("*GPU RX580* \nNow please send the cost in USD of  ⤵", opts);
+  ctx1.reply("*GPU RX580 8GB* \nNow please send the cost in USD of  ⤵", opts);
 });
 bot.action("3070", (ctx1) => {
   gpuSelected = ctx1.callbackQuery.data;
@@ -170,6 +181,13 @@ bot.action("1660", (ctx1) => {
   ethRate();
   rewardResult();
   ctx1.reply("*GPU GTX1660S* \nNow please send the cost in USD of  ⤵", opts);
+});
+bot.action("570", (ctx1) => {
+  gpuSelected = ctx1.callbackQuery.data;
+  console.log(`gpuSelected`, gpuSelected);
+  ethRate();
+  rewardResult();
+  ctx1.reply("*GPU RX570 8GB* \nNow please send the cost in USD of  ⤵", opts);
 });
 
 bot.on("message", (ctx) => {
@@ -199,6 +217,10 @@ bot.on("message", (ctx) => {
     gpuHashpower = 31000000;
     gpuMHS = "31mhs";
     gpuWatts = "75w";
+  } else if (gpuSelected === "570") {
+    gpuHashpower = 31000000;
+    gpuMHS = "31mhs";
+    gpuWatts = "85w";
   }
 
   if (!isNaN(userResponse)) {
