@@ -1,6 +1,12 @@
 export const selectGpuButtons = [
   [
     {
+      text: "5700 XT",
+      callback_data: "5700",
+    },
+  ],
+  [
+    {
       text: "570 8GB",
       callback_data: "570",
     },
