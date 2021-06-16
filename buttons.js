@@ -30,7 +30,7 @@ export const selectGpuButtons = [
     },
     {
       text: "6800 XT",
-      callback_data: "6700XT",
+      callback_data: "6800XT",
     },
   ],
   [
