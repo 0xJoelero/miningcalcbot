@@ -9,7 +9,11 @@
   "author": "joepereda",
   "license": "ISC",
   "dependencies": {
+    "i18next": "^20.3.2",
+    "i18next-browser-languagedetector": "^6.1.2",
     "node-fetch": "^2.6.1",
+    "react-i18next": "^11.11.0",
+    "react-intl": "^5.20.3",
     "telebot": "^1.4.1",
     "telegraf": "^4.3.0",
     "telegraf-inline-menu": "^6.2.1"

@@ -1,92 +1,92 @@
 export const selectGpuButtons = [
   [
     {
-      text: "5700 XT",
-      callback_data: "5700",
+      text: "RX 5700 XT",
+      callback_data: "RX 5700 XT",
     },
   ],
   [
     {
-      text: "570 8GB",
-      callback_data: "570",
+      text: "RX 570 8GB",
+      callback_data: "RX 570 8GB",
     },
     {
-      text: "580 8GB",
-      callback_data: "580",
+      text: "RX 580 8GB",
+      callback_data: "RX 580 8GB",
     },
     {
-      text: "5500 XT",
-      callback_data: "5500",
-    },
-  ],
-  [
-    {
-      text: "5600 XT",
-      callback_data: "5600",
-    },
-    {
-      text: "6700 XT",
-      callback_data: "6700XT",
-    },
-    {
-      text: "6800 XT",
-      callback_data: "6800XT",
+      text: "RX 5500 XT",
+      callback_data: "RX 5500 XT",
     },
   ],
   [
     {
-      text: "1080",
-      callback_data: "1080",
+      text: "RX 5600 XT",
+      callback_data: "RX 5600 XT",
     },
     {
-      text: "1080Ti",
-      callback_data: "1080Ti",
+      text: "RX 6700 XT",
+      callback_data: "RX 6700 XT",
     },
     {
-      text: "1660S",
-      callback_data: "1660s",
-    },
-  ],
-  [
-    {
-      text: "2060",
-      callback_data: "2060",
-    },
-    {
-      text: "2070",
-      callback_data: "2070",
-    },
-    {
-      text: "2080",
-      callback_data: "2080",
+      text: "RX 6800 XT",
+      callback_data: "RX 6800 XT",
     },
   ],
   [
     {
-      text: "2080Ti",
-      callback_data: "2080Ti",
+      text: "GTX 1080",
+      callback_data: "GTX 1080",
     },
     {
-      text: "3060",
-      callback_data: "3060",
+      text: "GTX 1080 Ti",
+      callback_data: "GTX 1080 Ti",
     },
     {
-      text: "3060Ti",
-      callback_data: "3060Ti",
+      text: "GTX 1660 Super",
+      callback_data: "GTX 1660 Super",
     },
   ],
   [
     {
-      text: "3070",
-      callback_data: "3070",
+      text: "RTX 2060",
+      callback_data: "RTX 2060",
     },
     {
-      text: "3080",
-      callback_data: "3080",
+      text: "RTX 2070",
+      callback_data: "RTX 2070",
     },
     {
-      text: "3090",
-      callback_data: "3090",
+      text: "RTX 2080",
+      callback_data: "RTX 2080",
+    },
+  ],
+  [
+    {
+      text: "RTX 2080 Ti",
+      callback_data: "RTX 2080 Ti",
+    },
+    {
+      text: "RTX 3060",
+      callback_data: "RTX 3060",
+    },
+    {
+      text: "RTX 3060 Ti",
+      callback_data: "RTX 3060 Ti",
+    },
+  ],
+  [
+    {
+      text: "RTX 3070",
+      callback_data: "RTX 3070",
+    },
+    {
+      text: "RTX 3080",
+      callback_data: "RTX 3080",
+    },
+    {
+      text: "RTX 3090",
+      callback_data: "RTX 3090",
     },
   ],
 ];
