@@ -1,11 +1,30 @@
 const { Telegraf } = require("telegraf");
 const { getReward, getEthPrice } = require("./apis");
-const { selectGpuButtons } = require("./buttons");
+const { selectGpuButtons, selectLanguageButtons } = require("./buttons");
 const { TELEGRAM_TOKEN } = require("./environment");
 const { trans } = require("./translations");
-import i18n from 'i18next';
+const i18n = require('i18next');
+const LocalSession = require('telegraf-session-local')
 
 const bot = new Telegraf(TELEGRAM_TOKEN);
+const property = 'data';
+
+const localSession = new LocalSession({
+  database: 'example_db.json',
+  property: 'session',
+  storage: LocalSession.storageFileAsync,
+  format: {
+    serialize: (obj) => JSON.stringify(obj, null, 2),
+    deserialize: (str) => JSON.parse(str),
+  },
+  state: { messages: [] }
+})
+
+localSession.DB.then(DB => {
+    console.log('Current LocalSession DB:', DB.value())
+});
+
+bot.use(localSession.middleware(property));
 
 let ethCurrentRate;
 let currentReward;
@@ -79,6 +98,20 @@ bot.command("calculateRoi", (ctx) => {
     },
     parse_mode: "Markdown",
   });
+});
+
+bot.command("language", (ctx) => {
+  bot.telegram.sendMessage(ctx.chat.id, i18n.t('language.options'), {
+    reply_markup: {
+      inline_keyboard: selectLanguageButtons,
+    },
+    parse_mode: "Markdown",
+  });
+});
+
+bot.hears('en', (ctx) => {
+  ctx[property].language = 'en'; 
+  ctx.reply('Language changed!')
 });
 
 bot.action("RX 570 8GB", (ctx1) => {
@@ -198,6 +231,10 @@ bot.action("RTX 3090", (ctx1) => {
 
 bot.on("message", (ctx) => {
   let userResponse = ctx.message.text;
+
+  ctx[property].counter = ctx[property].counter || 0;
+  ctx[property].counter++;
+  ctx[property + 'DB'].get('messages').push([ctx.message]).write()
 
   if (gpuSelected === "RX 570 8GB") {
     gpuHashpower = 31000000;

@@ -10,7 +10,8 @@ i18n.init({
                                  `\n\n*Commands:* \n/help -> Get help about the bot and commands,\n/calculateRoi -> Return list of GPUs to calculate ROI.` +
                                  `\n\n\n*Author*: @Joelero \n*Github*: https://github.com/joelperedaok/miningcalcbot `,
                 'reply.help': `/help -> list all commands` +
-                              `\n/calculateRoi -> Calculate ROI for supported GPUs`,
+                              `\n/calculateRoi -> Calculate ROI for supported GPUs` +
+                              `\n/language -> Switch bot language between supported options`,
                 'calculateRoi.select_gpu': `*Select a GPU to calculate the break even:*`,
                 'calculateRoi.selected_gpu': `*{{gpu_model}}* \nPlease tell me the cost in USD:`,
                 'calculateRoi.result': `*Result for 1 {{gpu_selected}}:*` +
@@ -19,6 +20,7 @@ i18n.init({
                                        `\nCost: {{gpu_cost}}` +
                                        `\nROI: {{gpu_roi}}`,
                 'calculateRoi.error':`⚠️ The response must be a valid supported GPU, please select it from te buttons above. ⚠️`,
+                'language.options': `Select language from above:`,
             }
         }
     } 
