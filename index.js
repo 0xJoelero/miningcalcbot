@@ -3,7 +3,7 @@ const { getReward, getEthPrice } = require("./apis");
 const { selectGpuButtons } = require("./buttons");
 const { TELEGRAM_TOKEN } = require("./environment");
 const { trans } = require("./translations");
-import i18n from 'i18next';
+import i18n from "i18next";
 
 const bot = new Telegraf(TELEGRAM_TOKEN);
 
@@ -58,22 +58,16 @@ const calculateRevenue = ({ hashpower }) => {
 
 // Start the bot and welcome message
 bot.start((ctx) => {
-  ctx.reply(
-      i18n.t('reply.welcome', {user:ctx.chat.first_name}),
-    opts
-  );
+  ctx.reply(i18n.t("reply.welcome", { user: ctx.chat.first_name }), opts);
 });
 
 bot.command("help", (ctx) => {
-  ctx.reply(
-    i18n.t('reply.help'),
-    opts
-  );
+  ctx.reply(i18n.t("reply.help"), opts);
 });
 
 // Declare /calculateRoi command, return the inline buttons
 bot.command("calculateRoi", (ctx) => {
-  bot.telegram.sendMessage(ctx.chat.id, i18n.t('calculateRoi.select_gpu'), {
+  bot.telegram.sendMessage(ctx.chat.id, i18n.t("calculateRoi.select_gpu"), {
     reply_markup: {
       inline_keyboard: selectGpuButtons,
     },
@@ -85,115 +79,172 @@ bot.action("RX 570 8GB", (ctx1) => {
   gpuSelected = ctx1.callbackQuery.data;
   ethRate();
   rewardResult();
-  ctx1.reply(i18n.t('calculateRoi.selected_gpu', {gpu_model:ctx1.callbackQuery.data}), opts);
+  ctx1.reply(
+    i18n.t("calculateRoi.selected_gpu", { gpu_model: ctx1.callbackQuery.data }),
+    opts
+  );
 });
 bot.action("RX 580 8GB", (ctx1) => {
   gpuSelected = ctx1.callbackQuery.data;
   ethRate();
   rewardResult();
-  ctx1.reply(i18n.t('calculateRoi.selected_gpu', {gpu_model:ctx1.callbackQuery.data}), opts);
+  ctx1.reply(
+    i18n.t("calculateRoi.selected_gpu", { gpu_model: ctx1.callbackQuery.data }),
+    opts
+  );
 });
 bot.action("RX 5500 XT", (ctx1) => {
   gpuSelected = ctx1.callbackQuery.data;
   ethRate();
   rewardResult();
-  ctx1.reply(i18n.t('calculateRoi.selected_gpu', {gpu_model:ctx1.callbackQuery.data}), opts);
+  ctx1.reply(
+    i18n.t("calculateRoi.selected_gpu", { gpu_model: ctx1.callbackQuery.data }),
+    opts
+  );
 });
 bot.action("RX 5600 XT", (ctx1) => {
   gpuSelected = ctx1.callbackQuery.data;
   ethRate();
   rewardResult();
-  ctx1.reply(i18n.t('calculateRoi.selected_gpu', {gpu_model:ctx1.callbackQuery.data}), opts);
+  ctx1.reply(
+    i18n.t("calculateRoi.selected_gpu", { gpu_model: ctx1.callbackQuery.data }),
+    opts
+  );
 });
 bot.action("RX 5700 XT", (ctx1) => {
   gpuSelected = ctx1.callbackQuery.data;
   ethRate();
   rewardResult();
-  ctx1.reply(i18n.t('calculateRoi.selected_gpu', {gpu_model:ctx1.callbackQuery.data}), opts);
+  ctx1.reply(
+    i18n.t("calculateRoi.selected_gpu", { gpu_model: ctx1.callbackQuery.data }),
+    opts
+  );
 });
 bot.action("RX 6700 XT", (ctx1) => {
   gpuSelected = ctx1.callbackQuery.data;
   ethRate();
   rewardResult();
-  ctx1.reply(i18n.t('calculateRoi.selected_gpu', {gpu_model:ctx1.callbackQuery.data}), opts);
+  ctx1.reply(
+    i18n.t("calculateRoi.selected_gpu", { gpu_model: ctx1.callbackQuery.data }),
+    opts
+  );
 });
 bot.action("RX 6800 XT", (ctx1) => {
   gpuSelected = ctx1.callbackQuery.data;
   ethRate();
   rewardResult();
-  ctx1.reply(i18n.t('calculateRoi.selected_gpu', {gpu_model:ctx1.callbackQuery.data}), opts);
+  ctx1.reply(
+    i18n.t("calculateRoi.selected_gpu", { gpu_model: ctx1.callbackQuery.data }),
+    opts
+  );
 });
 bot.action("GTX 1080", (ctx1) => {
   gpuSelected = ctx1.callbackQuery.data;
   ethRate();
   rewardResult();
-  ctx1.reply(i18n.t('calculateRoi.selected_gpu', {gpu_model:ctx1.callbackQuery.data}), opts);
+  ctx1.reply(
+    i18n.t("calculateRoi.selected_gpu", { gpu_model: ctx1.callbackQuery.data }),
+    opts
+  );
 });
 bot.action("GTX 1080 Ti", (ctx1) => {
   gpuSelected = ctx1.callbackQuery.data;
   ethRate();
   rewardResult();
-  ctx1.reply(i18n.t('calculateRoi.selected_gpu', {gpu_model:ctx1.callbackQuery.data}), opts);
+  ctx1.reply(
+    i18n.t("calculateRoi.selected_gpu", { gpu_model: ctx1.callbackQuery.data }),
+    opts
+  );
 });
 bot.action("GTX 1660 Super", (ctx1) => {
   gpuSelected = ctx1.callbackQuery.data;
   ethRate();
   rewardResult();
-  ctx1.reply(i18n.t('calculateRoi.selected_gpu', {gpu_model:ctx1.callbackQuery.data}), opts);
+  ctx1.reply(
+    i18n.t("calculateRoi.selected_gpu", { gpu_model: ctx1.callbackQuery.data }),
+    opts
+  );
 });
 bot.action("RTX 2060", (ctx1) => {
   gpuSelected = ctx1.callbackQuery.data;
   ethRate();
   rewardResult();
-  ctx1.reply(i18n.t('calculateRoi.selected_gpu', {gpu_model:ctx1.callbackQuery.data}), opts);
+  ctx1.reply(
+    i18n.t("calculateRoi.selected_gpu", { gpu_model: ctx1.callbackQuery.data }),
+    opts
+  );
 });
 bot.action("RTX 2070", (ctx1) => {
   gpuSelected = ctx1.callbackQuery.data;
   ethRate();
   rewardResult();
-  ctx1.reply(i18n.t('calculateRoi.selected_gpu', {gpu_model:ctx1.callbackQuery.data}), opts);
+  ctx1.reply(
+    i18n.t("calculateRoi.selected_gpu", { gpu_model: ctx1.callbackQuery.data }),
+    opts
+  );
 });
 bot.action("RTX 2080", (ctx1) => {
   gpuSelected = ctx1.callbackQuery.data;
   ethRate();
   rewardResult();
-  ctx1.reply(i18n.t('calculateRoi.selected_gpu', {gpu_model:ctx1.callbackQuery.data}), opts);
+  ctx1.reply(
+    i18n.t("calculateRoi.selected_gpu", { gpu_model: ctx1.callbackQuery.data }),
+    opts
+  );
 });
 bot.action("RTX 2080 Ti", (ctx1) => {
   gpuSelected = ctx1.callbackQuery.data;
   ethRate();
   rewardResult();
-  ctx1.reply(i18n.t('calculateRoi.selected_gpu', {gpu_model:ctx1.callbackQuery.data}), opts);
+  ctx1.reply(
+    i18n.t("calculateRoi.selected_gpu", { gpu_model: ctx1.callbackQuery.data }),
+    opts
+  );
 });
 bot.action("RTX 3060", (ctx1) => {
   gpuSelected = ctx1.callbackQuery.data;
   ethRate();
   rewardResult();
-  ctx1.reply(i18n.t('calculateRoi.selected_gpu', {gpu_model:ctx1.callbackQuery.data}), opts);
+  ctx1.reply(
+    i18n.t("calculateRoi.selected_gpu", { gpu_model: ctx1.callbackQuery.data }),
+    opts
+  );
 });
 bot.action("RTX 3060 Ti", (ctx1) => {
   gpuSelected = ctx1.callbackQuery.data;
   ethRate();
   rewardResult();
-  ctx1.reply(i18n.t('calculateRoi.selected_gpu', {gpu_model:ctx1.callbackQuery.data}), opts);
+  ctx1.reply(
+    i18n.t("calculateRoi.selected_gpu", { gpu_model: ctx1.callbackQuery.data }),
+    opts
+  );
 });
 bot.action("RTX 3070", (ctx1) => {
   gpuSelected = ctx1.callbackQuery.data;
   ethRate();
   rewardResult();
-  ctx1.reply(i18n.t('calculateRoi.selected_gpu', {gpu_model:ctx1.callbackQuery.data}), opts);
+  ctx1.reply(
+    i18n.t("calculateRoi.selected_gpu", { gpu_model: ctx1.callbackQuery.data }),
+    opts
+  );
 });
 bot.action("RTX 3080", (ctx1) => {
   gpuSelected = ctx1.callbackQuery.data;
   ethRate();
   rewardResult();
-  ctx1.reply(i18n.t('calculateRoi.selected_gpu', {gpu_model:ctx1.callbackQuery.data}), opts);
+  ctx1.reply(
+    i18n.t("calculateRoi.selected_gpu", { gpu_model: ctx1.callbackQuery.data }),
+    opts
+  );
 });
 bot.action("RTX 3090", (ctx1) => {
   gpuSelected = ctx1.callbackQuery.data;
   ethRate();
   rewardResult();
-  ctx1.reply(i18n.t('calculateRoi.selected_gpu', {gpu_model:ctx1.callbackQuery.data}), opts);
+  ctx1.reply(
+    i18n.t("calculateRoi.selected_gpu", { gpu_model: ctx1.callbackQuery.data }),
+    opts
+  );
 });
 
 bot.on("message", (ctx) => {
@@ -287,17 +338,18 @@ bot.on("message", (ctx) => {
       Number(ctx.message.text) / parseFloat(monthlyRevenueInUsdConverted);
     let fixedRoi = gpuRoi.toFixed(2);
 
-    ctx.reply(i18n.t('calculateRoi.result', {
-        gpu_selected:gpuSelected,
-        gpu_hashrate:gpuMHS,
-        gpu_watts:gpuWatts,
-        gpu_cost:ctx.message.text,
-        gpu_roi:fixedRoi})
-      ,
+    ctx.reply(
+      i18n.t("calculateRoi.result", {
+        gpu_selected: gpuSelected,
+        gpu_hashrate: gpuMHS,
+        gpu_watts: gpuWatts,
+        gpu_cost: ctx.message.text,
+        gpu_roi: fixedRoi,
+      }),
       opts
     );
   } else {
-    ctx.reply(i18n.t('calculateRoi.error'),opts);
+    ctx.reply(i18n.t("calculateRoi.error"), opts);
   }
 });
 
