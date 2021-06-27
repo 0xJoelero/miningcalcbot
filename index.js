@@ -16,8 +16,16 @@ let gpuMHS;
 let gpuWatts;
 // Inline buttons to select the GPUs
 
-// Options to set markdown in messasges
+// Options to set forceReply in messages
 const opts = {
+  reply_markup: {
+    force_reply: true,
+  },
+  parse_mode: "Markdown",
+};
+
+// Options to set markdown in messasges
+const optsResult = {
   reply_markup: {},
   parse_mode: "Markdown",
 };
@@ -337,19 +345,19 @@ bot.on("message", (ctx) => {
     let gpuRoi =
       Number(ctx.message.text) / parseFloat(monthlyRevenueInUsdConverted);
     let fixedRoi = gpuRoi.toFixed(2);
-
     ctx.reply(
       i18n.t("calculateRoi.result", {
         gpu_selected: gpuSelected,
         gpu_hashrate: gpuMHS,
         gpu_watts: gpuWatts,
-        gpu_cost: ctx.message.text,
-        gpu_roi: fixedRoi,
+        gpu_cost: `$${ctx.message.text}`,
+        gpu_monthly_revenue: `$${monthlyRevenueInUsd.toFixed(2)}`,
+        gpu_roi: `${fixedRoi} months`,
       }),
-      opts
+      optsResult
     );
   } else {
-    ctx.reply(i18n.t("calculateRoi.error"), opts);
+    ctx.reply(i18n.t("calculateRoi.error"), optsResult);
   }
 });
 

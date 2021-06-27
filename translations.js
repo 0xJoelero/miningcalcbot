@@ -19,6 +19,7 @@ i18n.init({
           `\n\nMH/s: {{gpu_hashrate}}` +
           `\nWatts: {{gpu_watts}}` +
           `\nCost: {{gpu_cost}}` +
+          `\nMonthly profit: {{gpu_monthly_revenue}}` +
           `\nROI: {{gpu_roi}}`,
         "calculateRoi.error": `⚠️ The response must be a valid supported GPU, please select it from te buttons above. ⚠️`,
       },
