@@ -1,4 +1,4 @@
-const { Telegraf } = require("telegraf");
+const { Telegraf, Markup } = require("telegraf");
 const { getReward, getEthPrice } = require("./apis");
 const { selectGpuButtons } = require("./buttons");
 const { TELEGRAM_TOKEN } = require("./environment");
@@ -7,6 +7,11 @@ import i18n from "i18next";
 
 const bot = new Telegraf(TELEGRAM_TOKEN);
 
+const langKeyboard = Markup.inlineKeyboard([
+  Markup.button.callback("English 🇬🇧", "en"),
+  Markup.button.callback("Español 🇪🇸", "es"),
+]);
+
 let ethCurrentRate;
 let currentReward;
 let revenueResult;
@@ -14,6 +19,7 @@ let gpuSelected;
 let gpuHashpower;
 let gpuMHS;
 let gpuWatts;
+let lang;
 // Inline buttons to select the GPUs
 
 // Options to set forceReply in messages
@@ -66,11 +72,20 @@ const calculateRevenue = ({ hashpower }) => {
 
 // Start the bot and welcome message
 bot.start((ctx) => {
-  ctx.reply(i18n.t("reply.welcome", { user: ctx.chat.first_name }), opts);
+  ctx.reply(
+    i18n.t("reply.welcome", { user: ctx.chat.first_name }),
+    langKeyboard,
+    opts
+  );
 });
 
 bot.command("help", (ctx) => {
   ctx.reply(i18n.t("reply.help"), opts);
+});
+
+// Change language command
+bot.command("lang", (ctx) => {
+  ctx.reply(i18n.t("reply.lang"), langKeyboard, optsResult);
 });
 
 // Declare /calculateRoi command, return the inline buttons
@@ -255,6 +270,32 @@ bot.action("RTX 3090", (ctx1) => {
   );
 });
 
+bot.action("en", (ctx) => {
+  lang = ctx.callbackQuery.data;
+  i18n.changeLanguage(lang);
+
+  ctx.reply(
+    `Language changed to English 🇬🇧 \n\n${i18n.t("reply.welcome", {
+      user: ctx.chat.first_name,
+    })}`,
+    langKeyboard,
+    opts
+  );
+});
+
+bot.action("es", (ctx) => {
+  lang = ctx.callbackQuery.data;
+  i18n.changeLanguage(lang);
+
+  ctx.reply(
+    `Lenguaje cambiado a Español 🇪🇸 \n\n${i18n.t("reply.welcome", {
+      user: ctx.chat.first_name,
+    })}`,
+    langKeyboard,
+    opts
+  );
+});
+
 bot.on("message", (ctx) => {
   let userResponse = ctx.message.text;
 
@@ -360,5 +401,7 @@ bot.on("message", (ctx) => {
     ctx.reply(i18n.t("calculateRoi.error"), optsResult);
   }
 });
+
+export const langSelected = lang;
 
 bot.launch();
