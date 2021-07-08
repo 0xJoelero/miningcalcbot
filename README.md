@@ -10,7 +10,7 @@ I'm @miningcalcbot. I'm a bot that calculates time to break even of GPU investme
 - [ ] `calculateRevenue` should return ETH revenue
 - [ ] `calculateRevenue` should return USD revenue
 - [ ] Add Spanish support
-- [ ] Remove translations from index and add translation constants
+- [x] Remove translations from index and add translation constants
 - [ ] Remove Telegram constants from `index.js`
 - [ ] `getReward()` from `api.js` should request full coins info and filter only ETH
 - [ ] Handle API errors and throttling

@@ -1,43 +1,15 @@
-import i18n from 'i18next';
+const I18n = require('./lib/i18n')
+const path = require('path')
 
+console.log(path.resolve(__dirname, 'locale'))
 
-i18n.init({
-    resources: {
-        en: {
-            translations: {
-                'reply.welcome': `Hi {{user}}! I'm @miningcalcbot.\nI'm a bot that calculates *ROI of GPU investments for Ethereum mining.*` +
-                                 `\n\n⚠️  This bot is in ALPHA, use it at your own risk. ⚠️ ` +
-                                 `\n\n*Commands:* \n/help -> Get help about the bot and commands,\n/calculateRoi -> Return list of GPUs to calculate ROI.` +
-                                 `\n\n\n*Author*: @Joelero \n*Github*: https://github.com/joelperedaok/miningcalcbot `,
-                'reply.help': `/help -> list all commands` +
-                              `\n/calculateRoi -> Calculate ROI for supported GPUs` +
-                              `\n/language -> Switch bot language between supported options`,
-                'calculateRoi.select_gpu': `*Select a GPU to calculate the break even:*`,
-                'calculateRoi.selected_gpu': `*{{gpu_model}}* \nPlease tell me the cost in USD:`,
-                'calculateRoi.result': `*Result for 1 {{gpu_selected}}:*` +
-                                       `\n\nMH/s: {{gpu_hashrate}}` +
-                                       `\nWatts: {{gpu_watts}}` +
-                                       `\nCost: {{gpu_cost}}` +
-                                       `\nROI: {{gpu_roi}}`,
-                'calculateRoi.error':`⚠️ The response must be a valid supported GPU, please select it from te buttons above. ⚠️`,
-                'language.options': `Select language from above:`,
-            }
-        }
-    } 
-,
-    fallbackLng: 'en',
-    debug: true,
-    // have a common namespace used around the full app
-    ns: ['translations'],
-    defaultNS: 'translations',
-    keySeparator: false, // we use content as keys
-    interpolation: {
-      escapeValue: false, // not needed for react!!
-      formatSeparator: ','
-    },
-    react: {
-      wait: true
-    }
-});
-
-export default i18n;
+export const i18n = new I18n({
+  directory: path.resolve(__dirname, 'locale'),
+  defaultLanguage: 'en',
+  sessionName: 'session',
+  useSession: true,
+  templateDate: {
+    pluralize: I18n.pluralize,
+    uppercase: (value) => value.toUpperCase()
+  }     
+})

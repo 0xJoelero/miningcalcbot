@@ -1,9 +1,13 @@
 export const selectLanguageButtons = [
   [
    {
-       text: "🇺 English",
+       text: "English",
        callback_data: "en",
-   }
+   },
+  {
+      text: "Espaniol",
+      callback_data: "es",
+  },
   ]
 ];
 
