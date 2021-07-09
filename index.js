@@ -83,7 +83,7 @@ bot.start((ctx) => {
 });
 
 bot.command("help", (ctx) => {
-  ctx.reply(i18n.t(ctx[property].language, "reply_help"), opts);
+  ctx.reply(i18n.t(ctx[property].language, "reply_help"));
 });
 
 // Declare /calculateRoi command, return the inline buttons
@@ -91,7 +91,11 @@ bot.command("help", (ctx) => {
 bot.command("calculateRoi", (ctx) => {
   bot.telegram.sendMessage(
     ctx.chat.id,
-    i18n.t(ctx[property].language, "calculateRoi_selectGpu")
+    i18n.t(ctx[property].language, "calculateRoi_selectGpu"),
+    {
+      reply_markup: {},
+      parse_mode: "Markdown",
+    }
   );
 });
 
