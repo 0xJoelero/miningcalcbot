@@ -1,10 +1,10 @@
-const { Telegraf, Markup } = require("telegraf");
+const { Telegraf } = require("telegraf");
 const { getReward, getEthPrice } = require("./apis");
 const { selectGpuButtons, selectLanguageButtons } = require("./buttons");
 const { TELEGRAM_TOKEN } = require("./environment");
 const LocalSession = require("telegraf-session-local");
 const { i18n } = require("./translations");
-const { supported_gpus, supported_gpus_data } = require("./supported_gpus");
+const { supported_gpus, getGpu } = require("./supported_gpus");
 
 const bot = new Telegraf(TELEGRAM_TOKEN);
 bot.use(i18n.middleware());
@@ -28,18 +28,10 @@ localSession.DB.then((DB) => {
 
 bot.use(localSession.middleware(property));
 
-const langKeyboard = Markup.inlineKeyboard([
-  Markup.button.callback("English 🇬🇧", "en"),
-  Markup.button.callback("Español 🇪🇸", "es"),
-]);
-
 let ethCurrentRate;
 let currentReward;
 let revenueResult;
 let gpuSelected;
-let gpuHashpower;
-let gpuMHS;
-let gpuWatts;
 
 // Options to set forceReply in messages
 const opts = {
@@ -124,35 +116,27 @@ bot.command("language", (ctx) => {
 
 bot.action("en", (ctx) => {
   ctx[property].language = "en";
-  ctx.reply("Language changed!");
+  ctx.reply("Selected language: English 🇬🇧");
 });
 
 bot.action("es", (ctx) => {
   ctx[property].language = "es";
-  ctx.reply("Cambiaste el idioma");
+  ctx.reply("Idioma seleccionado: Español 🇪🇸");
 });
-/*
-bot.action("RX 570 8GB", (ctx1) => {
-  gpuSelected = ctx1.callbackQuery.data;
-  ethRate();
-  rewardResult();
-  ctx1.reply(
-    i18n.t(
-      ctx1[property].language,
-      'calculateRoi_selectedGpu',
-      {gpu_model:gpuSelected}
-    ) 
-  );
-});
-*/
+
 bot.action(supported_gpus, (ctx1) => {
   gpuSelected = ctx1.callbackQuery.data;
   ethRate();
   rewardResult();
   ctx1.reply(
     i18n.t(ctx1[property].language, "calculateRoi_selectedGpu", {
-      gpu_model: gpuSelected,
-    })
+      gpumodel: gpuSelected,
+    }),
+    {
+      reply_markup: {
+        force_reply: true,
+      },
+    }
   );
 });
 
@@ -160,7 +144,7 @@ bot.on("message", (ctx) => {
   let userResponse = ctx.message.text;
 
   if (!isNaN(userResponse)) {
-    calculateRevenue({ hashpower: gpuHashpower });
+    calculateRevenue({ hashpower: getGpu(gpuSelected).gpu_hash_rate });
     let monthlyRevenueInUsd =
       parseFloat(revenueResult) * parseFloat(ethCurrentRate);
     let monthlyRevenueInUsdConverted =
@@ -171,12 +155,17 @@ bot.on("message", (ctx) => {
 
     ctx.reply(
       i18n.t(ctx[property].language, "calculateRoi_result", {
-        gpu_model: gpuSelected,
-        gpu_hashrate: gpuMHS,
-        gpu_watts: gpuWatts,
-        gpu_cost: ctx.message.text,
-        gpu_roi: fixedRoi,
-      })
+        gpumodel: gpuSelected,
+        gpuhashrate: getGpu(gpuSelected).gpu_mhs,
+        gpuwatts: getGpu(gpuSelected).gpu_watts,
+        gpucost: ctx.message.text,
+        gpumonthlyrevenue: monthlyRevenueInUsd.toFixed(2),
+        gpuroi: fixedRoi,
+      }),
+      {
+        reply_markup: {},
+        parse_mode: "HTML",
+      }
     );
   } else {
     ctx.reply(i18n.t("calculateRoi_error"), opts);
