@@ -25,6 +25,7 @@ calculateRoi_result: |
   Hashrate: <b>${gpuhashrate}MH/s</b>
   Watts: <b>${gpuwatts}W</b>
   Cost: <b>$${gpucost}</b>
+  Daily profit: <b>$${gpudailyrevenue}</b>
   Monthly profit: <b>$${gpumonthlyrevenue}</b>
   ROI: <b>${gpuroi} months</b>
 calculateRoi_error: >

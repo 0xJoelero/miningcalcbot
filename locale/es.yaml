@@ -25,7 +25,8 @@ calculateRoi_result: |
   Hashrate: <b>${gpuhashrate}MH/s</b>
   Consumo en watts: <b>${gpuwatts}W</b>
   Costo: <b>$${gpucost}</b>
-  Ganancia mensual: <b>$${gpumonthlyrevenue}</b>
+  Ganancia estimada diaria: <b>$${gpudailyrevenue}</b>
+  Ganancia estimada mensual: <b>$${gpumonthlyrevenue}</b>
   Punto de equilibrio: <b>${gpuroi} meses</b>
 calculateRoi_error: >
   ⚠️  La respuesta debe ser una GPU soportada, por favor seleccionala de los botones anteriores. ⚠️

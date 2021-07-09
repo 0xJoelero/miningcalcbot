@@ -96,7 +96,6 @@ bot.command("calculateRoi", (ctx) => {
       reply_markup: {
         inline_keyboard: selectGpuButtons,
       },
-      parse_mode: "Markdown",
     }
   );
 });
@@ -145,10 +144,10 @@ bot.on("message", (ctx) => {
 
   if (!isNaN(userResponse)) {
     calculateRevenue({ hashpower: getGpu(gpuSelected).gpu_hash_rate });
-    let monthlyRevenueInUsd =
+    let dailyRevenueInUsd =
       parseFloat(revenueResult) * parseFloat(ethCurrentRate);
     let monthlyRevenueInUsdConverted =
-      convertExponentialToDecimal(monthlyRevenueInUsd) * 30;
+      convertExponentialToDecimal(dailyRevenueInUsd) * 30;
     let gpuRoi =
       Number(ctx.message.text) / parseFloat(monthlyRevenueInUsdConverted);
     let fixedRoi = gpuRoi.toFixed(2);
@@ -159,7 +158,8 @@ bot.on("message", (ctx) => {
         gpuhashrate: getGpu(gpuSelected).gpu_mhs,
         gpuwatts: getGpu(gpuSelected).gpu_watts,
         gpucost: ctx.message.text,
-        gpumonthlyrevenue: monthlyRevenueInUsd.toFixed(2),
+        gpudailyrevenue: dailyRevenueInUsd.toFixed(2),
+        gpumonthlyrevenue: monthlyRevenueInUsdConverted.toFixed(2),
         gpuroi: fixedRoi,
       }),
       {
@@ -168,7 +168,7 @@ bot.on("message", (ctx) => {
       }
     );
   } else {
-    ctx.reply(i18n.t("calculateRoi_error"), opts);
+    ctx.reply(i18n.t("calculateRoi_error"));
   }
 });
 

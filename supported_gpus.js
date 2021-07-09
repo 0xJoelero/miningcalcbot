@@ -3,6 +3,7 @@ export const supported_gpus = [
   "RX 580 8GB",
   "RX 5500 XT",
   "RX 5600 XT",
+  "RX 5700 XT",
   "RX 6700 XT",
   "RX 6800 XT",
   "GTX 1080",
@@ -18,6 +19,7 @@ export const supported_gpus = [
   "RTX 3080",
   "RTX 3090",
 ];
+
 export const getGpu = (gpuSelected) => {
   switch (gpuSelected) {
     case "RX 570 8GB":
