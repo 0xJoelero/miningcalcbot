@@ -91,13 +91,7 @@ bot.command("help", (ctx) => {
 bot.command("calculateRoi", (ctx) => {
   bot.telegram.sendMessage(
     ctx.chat.id,
-    i18n.t(ctx[property].language, "calculateRoi_selectGpu"),
-    {
-      reply_markup: {
-        inline_keyboard: selectGpuButtons,
-      },
-      parse_mode: "Markdown",
-    }
+    i18n.t(ctx[property].language, "calculateRoi_selectGpu")
   );
 });
 
