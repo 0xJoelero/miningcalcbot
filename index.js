@@ -12,7 +12,7 @@ bot.use(i18n.middleware());
 const property = "data";
 
 const localSession = new LocalSession({
-  database: "example_db.json",
+  database: "session_db.json",
   property: "session",
   storage: LocalSession.storageFileAsync,
   format: {
@@ -182,7 +182,5 @@ bot.on("message", (ctx) => {
     ctx.reply(i18n.t("calculateRoi_error"), opts);
   }
 });
-
-export const langSelected = lang;
 
 bot.launch();
