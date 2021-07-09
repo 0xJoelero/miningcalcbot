@@ -1,32 +1,37 @@
-const { Telegraf } = require("telegraf");
+const { Telegraf, Markup } = require("telegraf");
 const { getReward, getEthPrice } = require("./apis");
 const { selectGpuButtons, selectLanguageButtons } = require("./buttons");
 const { TELEGRAM_TOKEN } = require("./environment");
-const LocalSession = require('telegraf-session-local')
-const { i18n } = require('./translations')
-const { supported_gpus, supported_gpus_data } = require('./supported_gpus')
+const LocalSession = require("telegraf-session-local");
+const { i18n } = require("./translations");
+const { supported_gpus, supported_gpus_data } = require("./supported_gpus");
 
 const bot = new Telegraf(TELEGRAM_TOKEN);
-bot.use(i18n.middleware())
+bot.use(i18n.middleware());
 
-const property = 'data';
+const property = "data";
 
 const localSession = new LocalSession({
-  database: 'example_db.json',
-  property: 'session',
+  database: "example_db.json",
+  property: "session",
   storage: LocalSession.storageFileAsync,
   format: {
     serialize: (obj) => JSON.stringify(obj, null, 2),
     deserialize: (str) => JSON.parse(str),
   },
-  state: { messages: [] }
-})
+  state: { messages: [] },
+});
 
-localSession.DB.then(DB => {
-    console.log('Current LocalSession DB:', DB.value())
+localSession.DB.then((DB) => {
+  console.log("Current LocalSession DB:", DB.value());
 });
 
 bot.use(localSession.middleware(property));
+
+const langKeyboard = Markup.inlineKeyboard([
+  Markup.button.callback("English 🇬🇧", "en"),
+  Markup.button.callback("Español 🇪🇸", "es"),
+]);
 
 let ethCurrentRate;
 let currentReward;
@@ -36,9 +41,9 @@ let gpuHashpower;
 let gpuMHS;
 let gpuWatts;
 
-// Options to set markdown in messasges
+// Options to set forceReply in messages
 const opts = {
-  reply_markup: {inline_keyboard: selectGpuButtons},
+  reply_markup: { inline_keyboard: selectGpuButtons },
   parse_mode: "Markdown",
 };
 
@@ -79,22 +84,14 @@ const calculateRevenue = ({ hashpower }) => {
 // Start the bot and welcome message
 bot.start((ctx) => {
   ctx.reply(
-    i18n.t(
-      ctx[property].language,
-      'reply_welcome',
-      {user:ctx.chat.first_name}
-    )
+    i18n.t(ctx[property].language, "reply_welcome", {
+      user: ctx.chat.first_name,
+    })
   );
 });
 
 bot.command("help", (ctx) => {
-  ctx.reply(
-    i18n.t(
-      ctx[property].language,
-      'reply_help'
-    ),
-    opts
-  );
+  ctx.reply(i18n.t(ctx[property].language, "reply_help"), opts);
 });
 
 // Declare /calculateRoi command, return the inline buttons
@@ -102,37 +99,37 @@ bot.command("help", (ctx) => {
 bot.command("calculateRoi", (ctx) => {
   bot.telegram.sendMessage(
     ctx.chat.id,
-    i18n.t(
-      ctx[property].language,
-      'calculateRoi_selectGpu'), {
-    reply_markup: {
-      inline_keyboard: selectGpuButtons,
-    },
-    parse_mode: "Markdown",
-  });
+    i18n.t(ctx[property].language, "calculateRoi_selectGpu"),
+    {
+      reply_markup: {
+        inline_keyboard: selectGpuButtons,
+      },
+      parse_mode: "Markdown",
+    }
+  );
 });
 
 bot.command("language", (ctx) => {
   bot.telegram.sendMessage(
     ctx.chat.id,
-    i18n.t(
-      ctx[property].language,
-      'language_options'), {
-    reply_markup: {
-      inline_keyboard: selectLanguageButtons,
-    },
-    parse_mode: "Markdown",
-  });
+    i18n.t(ctx[property].language, "language_options"),
+    {
+      reply_markup: {
+        inline_keyboard: selectLanguageButtons,
+      },
+      parse_mode: "Markdown",
+    }
+  );
 });
 
-bot.action('en', (ctx) => {
-  ctx[property].language = 'en'; 
-  ctx.reply('Language changed!')
+bot.action("en", (ctx) => {
+  ctx[property].language = "en";
+  ctx.reply("Language changed!");
 });
 
-bot.action('es', (ctx) => {
-  ctx[property].language = 'es';
-  ctx.reply('Cambiaste el idioma');
+bot.action("es", (ctx) => {
+  ctx[property].language = "es";
+  ctx.reply("Cambiaste el idioma");
 });
 /*
 bot.action("RX 570 8GB", (ctx1) => {
@@ -153,11 +150,9 @@ bot.action(supported_gpus, (ctx1) => {
   ethRate();
   rewardResult();
   ctx1.reply(
-    i18n.t(
-      ctx1[property].language,
-      'calculateRoi_selectedGpu',
-      {gpu_model:gpuSelected}
-    ) 
+    i18n.t(ctx1[property].language, "calculateRoi_selectedGpu", {
+      gpu_model: gpuSelected,
+    })
   );
 });
 
@@ -175,21 +170,19 @@ bot.on("message", (ctx) => {
     let fixedRoi = gpuRoi.toFixed(2);
 
     ctx.reply(
-      i18n.t(
-        ctx[property].language,
-        'calculateRoi_result', 
-        {
-          gpu_model:gpuSelected,
-          gpu_hashrate:gpuMHS,
-          gpu_watts:gpuWatts,
-          gpu_cost:ctx.message.text,
-          gpu_roi:fixedRoi
-        }
-      )
+      i18n.t(ctx[property].language, "calculateRoi_result", {
+        gpu_model: gpuSelected,
+        gpu_hashrate: gpuMHS,
+        gpu_watts: gpuWatts,
+        gpu_cost: ctx.message.text,
+        gpu_roi: fixedRoi,
+      })
     );
   } else {
-    ctx.reply(i18n.t('calculateRoi_error'),opts);
+    ctx.reply(i18n.t("calculateRoi_error"), opts);
   }
 });
+
+export const langSelected = lang;
 
 bot.launch();
