@@ -93,7 +93,9 @@ bot.command("calculateRoi", (ctx) => {
     ctx.chat.id,
     i18n.t(ctx[property].language, "calculateRoi_selectGpu"),
     {
-      reply_markup: {},
+      reply_markup: {
+        inline_keyboard: selectGpuButtons,
+      },
       parse_mode: "Markdown",
     }
   );
