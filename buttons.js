@@ -1,3 +1,18 @@
+export const selectLanguageButtons = [
+  [
+    {
+      text: "English 🇬🇧",
+      callback_data: "en",
+    },
+  ],
+  [
+    {
+      text: "Español 🇪🇸",
+      callback_data: "es",
+    },
+  ],
+];
+
 export const selectGpuButtons = [
   [
     {

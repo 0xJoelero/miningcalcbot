@@ -1,5 +1,4 @@
-import { ETHERSCAN_APIKEY } from "./environment";
-
+const { ETHERSCAN_APIKEY } = require("./environment");
 const fetch = require("node-fetch");
 
 export async function getReward() {

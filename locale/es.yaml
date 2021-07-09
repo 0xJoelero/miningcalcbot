@@ -1,0 +1,34 @@
+reply_welcome: |
+  Hola ${user}! Soy @miningcalcbot.
+  Soy un bot que calcula el retorno de inversion en mineria de Ethereum. 
+
+  ⚠️  Este bot se encuentra en ALFA, usalo a tu propio riesgo. ⚠️ 
+
+  Comandos: 
+  /help -> Lista los comandos disponibles,
+  /calculateRoi -> Calcula el ROI para las GPUs soportadas,
+  /language  -> Cambiar entre los distintos lenguajes soportados.
+
+  Autors: @Joelero & @Lucasnnicolas
+  Github: https://github.com/joelperedaok/
+reply_help: |
+  /help -> Lista los comandos disponibles,
+  /calculateRoi -> Calcula el ROI para las GPUs soportadas,
+  /language -> Cambiar entre los distintos lenguajes soportados.
+calculateRoi_selectGpu: >
+  Selecciona una GPU para calcular el punto de equilibrio
+calculateRoi_selectedGpu: |
+  Responda el costo en dolares de ${gpumodel} aqui abajo
+calculateRoi_result: |
+  Resultado para <b>${gpumodel}</b>
+
+  Hashrate: <b>${gpuhashrate}MH/s</b>
+  Consumo en watts: <b>${gpuwatts}W</b>
+  Costo: <b>$${gpucost}</b>
+  Ganancia estimada diaria: <b>$${gpudailyrevenue}</b>
+  Ganancia estimada mensual: <b>$${gpumonthlyrevenue}</b>
+  Punto de equilibrio: <b>${gpuroi} meses</b>
+calculateRoi_error: >
+  ⚠️  La respuesta debe ser una GPU soportada, por favor seleccionala de los botones anteriores. ⚠️
+language_options: >
+  Selecciona tu idioma con estos botones de abajo:

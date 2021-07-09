@@ -1,0 +1,34 @@
+reply_welcome: |
+  Hi ${user}! I'm @miningcalcbot.
+  I'm a bot that calculates ROI of GPU investments for Ethereum mining.
+
+  ⚠️  This bot is in ALPHA, use it at your own risk. ⚠️ 
+
+  Commands:
+  /help -> Get help about the bot and commands,
+  /calculateRoi -> Return list of GPUs to calculate ROI,
+  /language -> Switch between available languages.
+
+  Authors: @Joelero & @Lucasnnicolas
+  Github: https://github.com/joelperedaok/
+reply_help: |
+  /help -> list all commands
+  /calculateRoi -> Calculate ROI for supported GPUs
+  /language -> Switch bot language between supported options
+calculateRoi_selectGpu: |
+  Select a GPU to calculate the break even
+calculateRoi_selectedGpu: |
+  Please answer the cost in USD of ${gpumodel} below
+calculateRoi_result: |
+  Result for <b>${gpumodel}</b>
+
+  Hashrate: <b>${gpuhashrate}MH/s</b>
+  Watts: <b>${gpuwatts}W</b>
+  Cost: <b>$${gpucost}</b>
+  Daily profit: <b>$${gpudailyrevenue}</b>
+  Monthly profit: <b>$${gpumonthlyrevenue}</b>
+  ROI: <b>${gpuroi} months</b>
+calculateRoi_error: >
+  The response must be a valid supported GPU, please select it from te buttons above.
+language_options: >
+  Select your language from below:
