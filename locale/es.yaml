@@ -9,8 +9,8 @@ reply_welcome: |
   /calculateRoi -> Calcula el ROI para las GPUs soportadas,
   /language  -> Cambiar entre los distintos lenguajes soportados.
 
-  Autors: @Joelero & @Lucasnnicolas
-  Github: https://github.com/joelperedaok/
+  Autors: @joelero & @Lucasnnicolas
+  Github: https://github.com/0xJoelero/
 reply_help: |
   /help -> Lista los comandos disponibles,
   /calculateRoi -> Calcula el ROI para las GPUs soportadas,
