@@ -19,6 +19,10 @@ export const selectGpuButtons = [
       text: "RX 5700 XT",
       callback_data: "RX 5700 XT",
     },
+    {
+      text: "RTX 3060ti LHR",
+      callback_data: "RTX 3060ti LHR",
+    },
   ],
   [
     {
@@ -58,8 +62,8 @@ export const selectGpuButtons = [
       callback_data: "GTX 1080 Ti",
     },
     {
-      text: "GTX 1660 Super",
-      callback_data: "GTX 1660 Super",
+      text: "GTX 1660s",
+      callback_data: "GTX 1660s",
     },
   ],
   [
@@ -102,6 +106,20 @@ export const selectGpuButtons = [
     {
       text: "RTX 3090",
       callback_data: "RTX 3090",
+    },
+  ],
+  [
+    {
+      text: "RTX 3060 LHR",
+      callback_data: "RTX 3060 LHR",
+    },
+    {
+      text: "RTX 3070 LHR",
+      callback_data: "RTX 3070 LHR",
+    },
+    {
+      text: "RTX 3080 LHR",
+      callback_data: "RTX 3080 LHR",
     },
   ],
 ];

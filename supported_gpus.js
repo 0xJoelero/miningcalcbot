@@ -8,7 +8,7 @@ export const supported_gpus = [
   "RX 6800 XT",
   "GTX 1080",
   "GTX 1080 Ti",
-  "GTX 1660 Super",
+  "GTX 1660s",
   "RTX 2060",
   "RTX 2070",
   "RTX 2080",
@@ -18,6 +18,10 @@ export const supported_gpus = [
   "RTX 3070",
   "RTX 3080",
   "RTX 3090",
+  "RTX 3060 LHR",
+  "RTX 3060ti LHR",
+  "RTX 3070 LHR",
+  "RTX 3080 LHR",
 ];
 
 export const getGpu = (gpuSelected) => {
@@ -77,7 +81,7 @@ export const getGpu = (gpuSelected) => {
         gpu_mhs: 39,
         gpu_watts: 180,
       };
-    case "GTX 1660 Super":
+    case "GTX 1660s":
       return {
         gpu_hash_rate: 31000000,
         gpu_mhs: 31,
@@ -136,6 +140,30 @@ export const getGpu = (gpuSelected) => {
         gpu_hash_rate: 114000000,
         gpu_mhs: 114,
         gpu_watts: 320,
+      };
+    case "RTX 3060 LHR":
+      return {
+        gpu_hash_rate: 32000000,
+        gpu_mhs: 32,
+        gpu_watts: 110,
+      };
+    case "RTX 3060ti LHR":
+      return {
+        gpu_hash_rate: 40000000,
+        gpu_mhs: 40,
+        gpu_watts: 130,
+      };
+    case "RTX 3070 LHR":
+      return {
+        gpu_hash_rate: 41000000,
+        gpu_mhs: 41,
+        gpu_watts: 120,
+      };
+    case "RTX 3080 LHR":
+      return {
+        gpu_hash_rate: 64000000,
+        gpu_mhs: 64,
+        gpu_watts: 230,
       };
 
     default:
