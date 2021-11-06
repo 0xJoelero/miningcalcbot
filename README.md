@@ -4,7 +4,7 @@
 To use the bot on Telegram, search for @miningcalcbot.
 
 ## SETUP
-1. Copy content from `environment.example.js` and replace with your `TELEGRAM_TOKEN` and `ETHERSCAN_API_KEY`
+1. Copy content from `environment.example.js` and create a `environment.js` file replacing with your `TELEGRAM_TOKEN` and `ETHERSCAN_API_KEY`
 2. On the console run `$ yarn` to install dependencies
 3. Run `$ yarn add nodemon --dev`
 4. To run the project use `yarn dev` or `nodemon --exec babel-node index.js`
