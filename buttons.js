@@ -118,7 +118,7 @@ export const selectGpuButtons = [
       callback_data: "RTX 3070 LHR",
     },
     {
-      text: "RTX 3080",
+      text: "RTX 3080 LHR",
       callback_data: "RTX 3080 LHR",
     },
   ],
