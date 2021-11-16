@@ -6,20 +6,20 @@ reply_welcome: |
 
   Comandos: 
   /help -> Lista los comandos disponibles,
-  /calculateRoi -> Calcula el ROI para las GPUs soportadas,
+  /roi -> Calcula el ROI para las GPUs soportadas,
   /language  -> Cambiar entre los distintos lenguajes soportados.
 
   Autors: @joelero & @Lucasnnicolas
   Github: https://github.com/0xJoelero/
 reply_help: |
   /help -> Lista los comandos disponibles,
-  /calculateRoi -> Calcula el ROI para las GPUs soportadas,
+  /roi -> Calcula el ROI para las GPUs soportadas,
   /language -> Cambiar entre los distintos lenguajes soportados.
-calculateRoi_selectGpu: >
+roi_selectGpu: >
   Selecciona una GPU para calcular el punto de equilibrio
-calculateRoi_selectedGpu: |
+roi_selectedGpu: |
   Responda el costo en dolares de ${gpumodel} aqui abajo
-calculateRoi_result: |
+roi_result: |
   Resultado para <b>${gpumodel}</b>
 
   Hashrate: <b>${gpuhashrate}MH/s</b>
@@ -28,7 +28,7 @@ calculateRoi_result: |
   Ganancia estimada diaria: <b>$${gpudailyrevenue}</b>
   Ganancia estimada mensual: <b>$${gpumonthlyrevenue}</b>
   Punto de equilibrio: <b>${gpuroi} meses</b>
-calculateRoi_error: >
+roi_error: >
   ⚠️  La respuesta debe ser una GPU soportada, por favor seleccionala de los botones anteriores. ⚠️
 language_options: >
   Selecciona tu idioma con estos botones de abajo:

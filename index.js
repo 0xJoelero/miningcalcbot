@@ -86,12 +86,12 @@ bot.command("help", (ctx) => {
   ctx.reply(i18n.t(ctx[property].language, "reply_help"));
 });
 
-// Declare /calculateRoi command, return the inline buttons
+// Declare /roi command, return the inline buttons
 
-bot.command("calculateRoi", (ctx) => {
+bot.command("roi", (ctx) => {
   bot.telegram.sendMessage(
     ctx.chat.id,
-    i18n.t(ctx[property].language, "calculateRoi_selectGpu"),
+    i18n.t(ctx[property].language, "roi_selectGpu"),
     {
       reply_markup: {
         inline_keyboard: selectGpuButtons,
@@ -128,7 +128,7 @@ bot.action(supported_gpus, (ctx1) => {
   ethRate();
   rewardResult();
   ctx1.reply(
-    i18n.t(ctx1[property].language, "calculateRoi_selectedGpu", {
+    i18n.t(ctx1[property].language, "roi_selectedGpu", {
       gpumodel: gpuSelected,
     }),
     {
@@ -153,7 +153,7 @@ bot.on("message", (ctx) => {
     let fixedRoi = gpuRoi.toFixed(2);
 
     ctx.reply(
-      i18n.t(ctx[property].language, "calculateRoi_result", {
+      i18n.t(ctx[property].language, "roi_result", {
         gpumodel: gpuSelected,
         gpuhashrate: getGpu(gpuSelected).gpu_mhs,
         gpuwatts: getGpu(gpuSelected).gpu_watts,
@@ -168,7 +168,7 @@ bot.on("message", (ctx) => {
       }
     );
   } else {
-    ctx.reply(i18n.t("calculateRoi_error"));
+    ctx.reply(i18n.t("roi_error"));
   }
 });
 

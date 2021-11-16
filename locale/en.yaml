@@ -6,20 +6,20 @@ reply_welcome: |
 
   Commands:
   /help -> Get help about the bot and commands,
-  /calculateRoi -> Return list of GPUs to calculate ROI,
+  /roi -> Return list of GPUs to calculate ROI,
   /language -> Switch between available languages.
 
   Authors: @joelero & @Lucasnnicolas
   Github: https://github.com/0xJoelero/
 reply_help: |
   /help -> list all commands
-  /calculateRoi -> Calculate ROI for supported GPUs
+  /roi -> Calculate ROI for supported GPUs
   /language -> Switch bot language between supported options
-calculateRoi_selectGpu: |
+roi_selectGpu: |
   Select a GPU to calculate the break even
-calculateRoi_selectedGpu: |
+roi_selectedGpu: |
   Please answer the cost in USD of ${gpumodel} below
-calculateRoi_result: |
+roi_result: |
   Result for <b>${gpumodel}</b>
 
   Hashrate: <b>${gpuhashrate}MH/s</b>
@@ -28,7 +28,7 @@ calculateRoi_result: |
   Daily profit: <b>$${gpudailyrevenue}</b>
   Monthly profit: <b>$${gpumonthlyrevenue}</b>
   ROI: <b>${gpuroi} months</b>
-calculateRoi_error: >
+roi_error: >
   The response must be a valid supported GPU, please select it from te buttons above.
 language_options: >
   Select your language from below:
